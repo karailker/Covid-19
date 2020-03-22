@@ -1,0 +1,8 @@
+# Required modules for this project.  You have to install or update required modules with
+# "pip install -r requirements.txt" before you compile and run.
+
+selenium
+pandas
+numpy
+folium
+googletrans
