@@ -80,19 +80,19 @@ def get_countries():
     browser.get(url=url)
     time.sleep(2)
     country_rows = browser.find_elements_by_xpath("//div[@id='nav-today']//tbody[1]//tr")
-    print(country_rows)
+    # print(country_rows)
     num_of_countries = len(country_rows)
 
     columns = browser.find_elements_by_xpath("//div[@id='nav-today']//tbody[1]//tr[1]//td")
-    print(columns)
-    num_of_rows = len(columns)
+    # print(columns)
+    num_of_cols = len(columns)
 
-    print(num_of_countries)
-    print(num_of_rows)
+    print("num_of_countries: ", num_of_countries)
+    # print(num_of_cols)
 
     for i in range(num_of_countries):
         raw_data = []
-        for j in range(num_of_rows):
+        for j in range(num_of_cols):
             appended_text = browser.find_element_by_xpath("//tbody[1]//tr["+ str(i+1) +"]//td[" + str(j+1) + "]").text.replace(',', '')
             if appended_text == "":
                 appended_text = "0"
