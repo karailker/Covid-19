@@ -107,21 +107,12 @@ def get_countries():
         raw_data = [raw_data]
         raw_data = np.array(raw_data)
 
-        # print("data:", data)
-        # print("rawdata:", raw_data)
         data = np.concatenate((data, raw_data))
-        # print("data:", data)
 
-    # print("Test:\n")
-    # for country in countries:
-    #     print(country.text)
-    #
     data = pd.DataFrame(data=data[1:, 1:],
                        index=data[1:, 0],
                        columns=data[0, 1:])
 
-    # first = data.loc[:, 0:1]
-    # second = data.loc[: 1:]
 
     types = {"TotalCases": float, "NewCases": float, "TotalDeaths": float,"NewDeaths": float,
              "TotalRecovered": float, "ActiveCases": float, "CriticalCases": float, "TotCasesPer1M": float
@@ -142,7 +133,7 @@ def create_map():
     m = folium.Map(location=[0, 0], tiles='OpenStreetMap', zoom_start=2)
 
     # Title of map
-    title = "<center><h1>CoronaVirus (Covid-19) Haritası</h1></center>"
+    title = "<div class='container'><h1 class='text-center'>CoronaVirus (Covid-19) Haritası</h1></div>"
     m.get_root().html.add_child(folium.Element(title))
 
     # CSV file for marking each country on its capitals. This file contains countries information which are name and coordinates of capitals and region of country
@@ -179,8 +170,28 @@ def create_map():
             fill_color='red',
         ).add_to(m)
 
-    # legend_html = "<div style=”position: fixed; bottom: 50px; left: 50px; width: 100px; height: 90px; border:2px solid grey; z-index:9999; font size:14px;“>&nbsp; Cool Legend <br>&nbsp; East &nbsp; <i class=”fa fa-map-marker fa-2x”style=”color:green”></i><br>&nbsp; West &nbsp; <i class=”fa fa-map-marker fa-2x”style=”color:red”></i></div>"
-    # m.get_root().html.add_child(folium.Element(legend_html))
+    item_txt = """<br> &nbsp; Vaka Sayısı: &nbsp; {total_cases} <br> &nbsp; Ölü Sayısı:  &nbsp; {total_deaths}"""
+    html_itms = item_txt.format(total_cases=int(total_cases), total_deaths=int(data.TotalDeaths.sum()))
+
+    legend_html = """
+         <div style="
+         position: fixed; 
+         bottom: 50px; left: 50px; width: 200px; height: 160px; 
+         border:2px solid white; z-index:9999; 
+
+         font-size:14px;
+         font-weight: bold;
+
+         ">
+         &nbsp; <center><h4>{title}</h4></center>
+         <hr>
+
+         {itm_txt}
+
+          </div> """.format(title="Dünya Geneli", itm_txt=html_itms)
+    m.get_root().html.add_child(folium.Element(legend_html))
+
+    # folium.GeoJson(data="countries.geo.json", name="geojson").add_to(m)
 
     m.save(map_path)
 
