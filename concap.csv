@@ -1,5 +1,5 @@
 CountryName,CapitalName,CapitalLatitude,CapitalLongitude,CountryCode,ContinentName
-Somaliland,Hargeisa,9.55,44.050000,NULL,Africa
+Somaliland,Hargeisa,9.55,44.050000,NULL,Africa,
 South Georgia and South Sandwich Islands,King Edward Point,-54.283333,-36.500000,GS,Antarctica
 French Southern and Antarctic Lands,Port-aux-Français,-49.35,70.216667,TF,Antarctica
 Palestine,Jerusalem,31.766666666666666,35.233333,PS,Asia
@@ -220,7 +220,7 @@ Trinidad and Tobago,Port of Spain,10.65,-61.516667,TT,North America
 Tunisia,Tunis,36.8,10.183333,TN,Africa
 Turkey,Ankara,39.93333333333333,32.866667,TR,Europe
 Turkmenistan,Ashgabat,37.95,58.383333,TM,Asia
-Turks and Caicos Islands,Grand Turk,21.466666666666665,-71.133333,TC,North America
+Turks and Caicos,Grand Turk,21.466666666666665,-71.133333,TC,North America
 Tuvalu,Funafuti,-8.516666666666667,179.216667,TV,Australia
 Uganda,Kampala,0.31666666666666665,32.550000,UG,Africa
 Ukraine,Kyiv,50.43333333333333,30.516667,UA,Europe
@@ -253,3 +253,4 @@ Channel Islands,Channel Islands,49.372284,-2.364351,NULL,Europe
 St. Barth,Gustavia,17.89618,-62.84978,NULL,South America
 Mayotte,Mamoudzou,-12.78234,45.22878,NULL,South Africa
 St. Vincent Grenadines,Kingstown,13.15872,-61.22475,NULL,South Africa
+MS Zaandam, MS Zaandam,8.815993,79.5798,NULL,South America
