@@ -99,7 +99,7 @@ Iran,Tehran,35.7,51.416667,IR,Asia,Iran
 Iraq,Baghdad,33.333333333333,44.4,IQ,Asia,Iraq
 Ireland,Dublin,53.316666666667,-6.233333,IE,Europe,Ireland
 Isle of Man,Douglas,54.15,-4.483333,IM,Europe,Isle of Man
-Israel,Jerusalem,31.766666666667,35.233333,IL,Asia,Israel
+Israel,Tel Aviv,32.0879994,34.7622266,IL,Asia,Israel
 Italy,Rome,41.9,12.483333,IT,Europe,Italy
 Jamaica,Kingston,18,-76.8,JM,North America,Jamaica
 Japan,Tokyo,35.683333333333,139.75,JP,Asia,Japan
@@ -173,7 +173,7 @@ Saint Barthelemy,Gustavia,17.883333333333,-62.85,BL,North America,Saint Barthele
 Saint Helena,Jamestown,-15.933333333333,-5.716667,SH,Africa,Saint Helena
 Saint Kitts and Nevis,Basseterre,17.3,-62.716667,KN,North America,Saint Kitts and Nevis
 Saint Lucia,Castries,14,-61,LC,North America,Saint Lucia
-Saint Pierre and Miquelon,Saint-Pierre,46.766666666667,-56.183333,PM,North America,Saint Pierre and Miquelon
+Saint Pierre Miquelon,Saint-Pierre,46.766666666667,-56.183333,PM,North America,Saint Pierre and Miquelon
 Saint Vincent and the Grenadines,Kingstown,13.133333333333,-61.216667,VC,North America,Saint Vincent and the Grenadines
 Samoa,Apia,-13.816666666667,-171.766667,WS,Oceania,Samoa
 San Marino,San Marino,43.933333333333,12.416667,SM,Europe,San Marino
@@ -249,7 +249,7 @@ Caribbean Netherlands,Bonaire,12.201890,-68.262383,NULL,South America,Caribbean 
 Somaliland,Hargeisa,9.55,44.05,NULL,Africa,Somaliland
 South Georgia and South Sandwich Islands,King Edward Point,-54.283333,-36.5,GS,Antarctica,South Georgia and South Sandwich Islands
 French Southern and Antarctic Lands,Port-aux-Français,-49.35,70.216667,TF,Antarctica,French Southern and Antarctic Lands
-Palestine,Jerusalem,31.766666666667,35.233333,PS,Asia,Palestine
+Palestine,Jerusalem,31.7964453,35.1053191,PS,Asia,Palestine
 Aland Islands,Mariehamn,60.116667,19.9,AX,Europe,Aland Islands
 Nauru,Yaren,-0.5477,166.920867,NR,Oceania,Nauru
 Saint Martin,Marigot,18.0731,-63.0822,MF,North America,Saint Martin
