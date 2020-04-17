@@ -99,6 +99,7 @@ cities = []
 
 # Update time of data
 update_time = ""
+city_update_time = "11.04.2020"
 
 # Database configs
 db = sqlite3.connect("covid-db.sqlite")
@@ -131,23 +132,27 @@ def get_countries():
 
     for i in range(num_of_countries):
         raw_data = []
-        for j in range(10):
-            appended_text = browser.find_element_by_xpath("//tbody[1]//tr[" + str(i+1) + "]//td[" + str(j+1) + "]")\
-                .text.replace(',', '')
-            if appended_text == "":
-                appended_text = "0"
-            if any(char.isdigit() for char in appended_text) and j != 10:
-                raw_data.append(float(appended_text))
-            else:
-                raw_data.append(appended_text)
-        print("rawdata:", raw_data)
-        new_country = Country(raw_data)
-        countries.append(new_country)
+        country_control = browser.find_element_by_xpath("//tbody[1]//tr[" + str(i + 1) + "]//td[1]") \
+            .text.replace(',', '')
+        # print("country_control:", country_control)
+        if country_control != "":
+            for j in range(10):
+                appended_text = browser.find_element_by_xpath("//tbody[1]//tr[" + str(i+1) + "]//td[" + str(j+1) + "]")\
+                    .text.replace(',', '')
+                if appended_text == "" or appended_text == "N/A":
+                    appended_text = "0"
+                if any(char.isdigit() for char in appended_text) and j != 10:
+                    raw_data.append(float(appended_text))
+                else:
+                    raw_data.append(appended_text)
+            print("rawdata:", raw_data)
+            new_country = Country(raw_data)
+            countries.append(new_country)
 
-        raw_data = [raw_data]
-        raw_data = np.array(raw_data)
+            raw_data = [raw_data]
+            raw_data = np.array(raw_data)
 
-        data = np.concatenate((data, raw_data))
+            data = np.concatenate((data, raw_data))
 
     get_northern_cyprus()
 
@@ -281,7 +286,7 @@ def create_map():
     get_countries()
     get_cities()
 
-    global translator, update_time, cities, db
+    global translator, update_time, cities, db, city_update_time
 
     # Number of Total Cases in all around the world
     total_cases = data[1:].TotalCases.sum()
@@ -307,7 +312,7 @@ def create_map():
     ulke_feature_group = folium.FeatureGroup(name="Ülke Verisi", show=False)
 
     update_time_query = 'update update_time set all_data="{v1}", cities_data="{v2}" where row = 1'.format(
-        v1=update_time, v2="03.04.2020"
+        v1=update_time, v2=city_update_time
     )
     cursor.execute(update_time_query)
     db.commit()
@@ -508,6 +513,7 @@ def insert_countrydata_to_database():
             # print(add_country_to_data_query)
             cursor.execute(add_country_to_data_query)
             db.commit()
+            print("(INSERT)insert_countrydata_to_database: ", country.name)
         else:
             # print("{country} is in the table named data. It's data will be updated.".format(country=country.name))
             update_country_query = 'update data set data_total_cases = {v2}, data_new_cases = {v3}, ' \
@@ -521,7 +527,7 @@ def insert_countrydata_to_database():
             # print(update_country_query)
             cursor.execute(update_country_query)
             db.commit()
-        print("insert_countrydata_to_database: ", country.name)
+            print("(UPDATE)insert_countrydata_to_database: ", country.name)
 
 
 if __name__ == "__main__":
